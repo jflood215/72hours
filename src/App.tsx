@@ -1,30 +1,3 @@
-// import React from "react";
-// import { useState, useEffect } from "react";
-// import "./App.css";
-// import NasaAPI from "../src/Nasa/NasaAPI";
-
-// function App() {
-//   const [latitude, setLatitude] = useState(0);
-//   const [longitude, setLongitude] = useState(0);
-
-//   useEffect(() => {
-//     navigator.geolocation.getCurrentPosition(location);
-//   }, []);
-
-//   function location(position: any) {
-//     setLatitude(position.coords.latitude);
-//     setLongitude(position.coords.longitude);
-//   }
-
-//   return (
-//     <div>
-//       You are located at: Longitude: {Math.round(longitude).toFixed(3)},
-//       Latitude: {Math.round(latitude).toFixed(3)}
-//       <hr />
-//       <NasaAPI url={nasaUrl} />
-//     </div>
-//   );
-
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import WeatherData from "./WeatherData/WeatherData";
@@ -65,23 +38,23 @@ function App() {
 
   return (
     <div style={{ textAlign: "center" }} className={classes.root}>
-      You are located at: Longitude: {Math.round(longitude).toFixed(3)},
-      Latitude: {Math.round(latitude).toFixed(3)}
+      You are located at: Longitude: {longitude.toFixed(3)}, Latitude:{" "}
+      {latitude.toFixed(3)}
       <hr />
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid item xs={6}>
           <Paper className={classes.paper}>
             <NasaAPI url={nasaUrl} />
           </Paper>
         </Grid>
-        <Grid item xs={8}>
-          <Paper className={classes.paper}>
-            <Zomato URL={RestaurantURL} />
-          </Paper>
-        </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={6}>
           <Paper className={classes.paper}>
             <WeatherData weatherURL={weatherURL} />
+          </Paper>
+        </Grid>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
+            <Zomato URL={RestaurantURL} />
           </Paper>
         </Grid>
       </Grid>
