@@ -1,8 +1,7 @@
+import { CardContent } from '@material-ui/core';
 import React from 'react';
 import {RootObject, NearbyRestaurant} from './ZomatoInterface';
 import Zomatos from './Zomatos';
-
-
 
 export interface ZomatoProps {
     URL: string;
@@ -19,12 +18,13 @@ export interface ZomatoState {
 class Zomato extends React.Component<ZomatoProps, ZomatoState> {
     constructor(props: ZomatoProps) {
         super(props);
-        this.state = {NearbyRestaurant: [],
+        this.state = {NearbyRestaurant: []
             // latitude: 0,
             // longitude: 0,
         
         };
     }
+    
     componentDidUpdate(prevProps:ZomatoProps) {
         // Typical usage (don't forget to compare props):
         if (this.props.URL !== prevProps.URL) {
@@ -47,8 +47,8 @@ class Zomato extends React.Component<ZomatoProps, ZomatoState> {
 
   
     render() { 
-        return ( 
-            <div>
+        return (   
+            <CardContent>
                 {this.state.NearbyRestaurant.length > 0 ?
                 (this.state.NearbyRestaurant.map(
                     (nearby_restaurants: NearbyRestaurant, index:number) => (
@@ -58,7 +58,7 @@ class Zomato extends React.Component<ZomatoProps, ZomatoState> {
                 ) : (
                     <></>
                 )}
-            </div>
+         </CardContent>
          );
     }
 }

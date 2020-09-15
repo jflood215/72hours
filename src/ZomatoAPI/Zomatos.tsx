@@ -1,3 +1,4 @@
+import { Restaurant } from '@material-ui/icons';
 import React from 'react';
 import {NearbyRestaurant} from './ZomatoInterface';
 
@@ -9,7 +10,7 @@ export interface ZomatosProps {
 const Zomatos: React.SFC<ZomatosProps> = () => {
   return ( 
     <div>
-      
+     
     </div>
    );
 }
