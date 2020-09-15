@@ -3,6 +3,7 @@ import "./App.css";
 import Zomato from './Zomato';
 
 
+
 function App() {
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
@@ -13,8 +14,8 @@ function App() {
   function location(position: any) {
     setLatitude(position.coords.latitude);
     setLongitude(position.coords.longitude);
-    console.log("Lat: " + latitude);
-    console.log("Lon: " + longitude);
+    // console.log("Lat: " + latitude);
+    // console.log("Lon: " + longitude);
   }
   
   return (
