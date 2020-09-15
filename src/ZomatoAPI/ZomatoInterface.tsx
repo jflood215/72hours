@@ -108,9 +108,9 @@
     }
 
     export interface RootObject {
-        location: Location;
-        popularity: Popularity;
-        link: string;
-        nearby_restaurants: NearbyRestaurant[];
+        location?: Location;
+        popularity?: Popularity;
+        link?: string;
+        nearby_restaurants?: NearbyRestaurant[];
     }
 

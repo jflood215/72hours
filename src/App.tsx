@@ -34,8 +34,8 @@ function App() {
   }
   return (
     <div style={{ textAlign: "center" }} className={classes.root}>
-      You are located at: Longitude: {Math.round(longitude).toFixed(3)},
-      Latitude: {Math.round(latitude).toFixed(3)}
+      You are located at: Longitude: {longitude.toFixed(3)},
+      Latitude: {latitude.toFixed(3)}
       <hr />
       <Grid container spacing={3}>
         <Grid item xs={12}>

@@ -1,7 +1,7 @@
 import { CardContent } from '@material-ui/core';
 import React from 'react';
 import {RootObject, NearbyRestaurant} from './ZomatoInterface';
-import Zomatos from './Zomatos';
+// import Zomatos from './Zomatos';
 
 export interface ZomatoProps {
     URL: string;
@@ -10,7 +10,7 @@ export interface ZomatoProps {
 }
  
 export interface ZomatoState {
-    NearbyRestaurant: any;
+    NearbyRestaurant: RootObject;
     // latitude: number,
     // longitude: number
 }
@@ -18,7 +18,7 @@ export interface ZomatoState {
 class Zomato extends React.Component<ZomatoProps, ZomatoState> {
     constructor(props: ZomatoProps) {
         super(props);
-        this.state = {NearbyRestaurant: []
+        this.state = {NearbyRestaurant: {}
             // latitude: 0,
             // longitude: 0,
         
@@ -26,6 +26,7 @@ class Zomato extends React.Component<ZomatoProps, ZomatoState> {
     }
     
     componentDidUpdate(prevProps:ZomatoProps) {
+        console.log(this.props.URL);
         // Typical usage (don't forget to compare props):
         if (this.props.URL !== prevProps.URL) {
             fetch(this.props.URL,
@@ -37,8 +38,8 @@ class Zomato extends React.Component<ZomatoProps, ZomatoState> {
                 .then((res) => res.json())
                 .then((json:RootObject) => {
                     console.log(json)
-                    console.log(URL)
-                    this.setState({NearbyRestaurant:json.nearby_restaurants})
+                    // console.log(URL)
+                    this.setState({NearbyRestaurant:json})
                 }
                 );
         }
@@ -49,10 +50,11 @@ class Zomato extends React.Component<ZomatoProps, ZomatoState> {
     render() { 
         return (   
             <CardContent>
-                {this.state.NearbyRestaurant.length > 0 ?
-                (this.state.NearbyRestaurant.map(
+                <h1>NearbyRestaurants:</h1>
+                {this.state.NearbyRestaurant !=undefined ?
+                (this.state.NearbyRestaurant.nearby_restaurants?.map(
                     (nearby_restaurants: NearbyRestaurant, index:number) => (
-                        <Zomatos location={nearby_restaurants} key={index}  />
+                    <p>{nearby_restaurants.restaurant.name}</p>
                     )
                 )
                 ) : (
