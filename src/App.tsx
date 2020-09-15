@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import WeatherData from "./WeatherData/WeatherData";
-import Zomato from './ZomatoAPI/Zomato';
+import Zomato from "./ZomatoAPI/Zomato";
+
 import NasaAPI from "../src/Nasa/NasaAPI";
 import { Paper, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -34,8 +35,8 @@ function App() {
   }
   return (
     <div style={{ textAlign: "center" }} className={classes.root}>
-      You are located at: Longitude: {longitude.toFixed(3)},
-      Latitude: {latitude.toFixed(3)}
+      You are located at: Longitude: {longitude.toFixed(3)}, Latitude:{" "}
+      {latitude.toFixed(3)}
       <hr />
       <Grid container spacing={3}>
         <Grid item xs={12}>
