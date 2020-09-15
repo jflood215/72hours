@@ -6,6 +6,7 @@ import Zomato from "./ZomatoAPI/Zomato";
 import NasaAPI from "../src/Nasa/NasaAPI";
 import { Paper, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { lightBlue } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,24 +35,30 @@ function App() {
     //     console.log("Lon: " + longitude);
   }
   return (
-    <div style={{ textAlign: "center" }} className={classes.root}>
-      You are located at: Longitude: {longitude.toFixed(3)}, Latitude:{" "}
-      {latitude.toFixed(3)}
+    <div
+      style={{ textAlign: "center", backgroundColor: "#3e3eff" }}
+      className={classes.root}
+    >
+      <h4>
+        You are located at: Longitude: {longitude.toFixed(3)}, Latitude:{" "}
+        {latitude.toFixed(3)}
+      </h4>
       <hr />
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
+            <WeatherData weatherURL={weatherURL} />
+          </Paper>
+        </Grid>
+        <Grid item xs={6}>
+          <Paper className={classes.paper}>
+            <h5>Your city from space!</h5>
             <NasaAPI url={nasaUrl} />
           </Paper>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={6}>
           <Paper className={classes.paper}>
             <Zomato URL={RestaurantURL} />
-          </Paper>
-        </Grid>
-        <Grid item xs={4}>
-          <Paper className={classes.paper}>
-            <WeatherData weatherURL={weatherURL} />
           </Paper>
         </Grid>
       </Grid>

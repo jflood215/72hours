@@ -39,7 +39,7 @@ class Nasa extends React.Component<NasaProps, NasaState> {
     return (
       <div>
         <img
-          style={{ width: "30em", height: "30em" }}
+          style={{ width: "25em", height: "25em" }}
           src={this.state.nasaBlob}
         />
       </div>
