@@ -1,13 +1,13 @@
 import React from "react";
 import { WeatherDataResponse } from "./WeatherDataInterface";
 import { withStyles } from "@material-ui/core/styles";
-import {Button, Typography} from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import { TimePicker } from "material-ui";
 
-const styles = ({
+const styles = {
   root: {
     flex: 1,
-    textAlign: 'left',
+    textAlign: "left",
   },
   title: {
     fontSize: 14,
@@ -15,7 +15,7 @@ const styles = ({
   pos: {
     marginBottom: 12,
   },
-});
+};
 
 export interface WeatherDataProps {
   weatherURL: string;
@@ -30,26 +30,30 @@ class WeatherData extends React.Component<WeatherDataProps, WeatherDataState> {
     super(props);
     this.state = { weatherInformation: {} };
   }
-  
+
   componentDidUpdate(prevProps: WeatherDataProps) {
     if (this.props.weatherURL !== prevProps.weatherURL) {
       fetch(this.props.weatherURL)
-      .then((res) => res.json())
-      .then((json: WeatherDataResponse) => {
-        console.log(json);
-        this.setState({ 
-          weatherInformation: json
-        })
-      });
+        .then((res) => res.json())
+        .then((json: WeatherDataResponse) => {
+          console.log(json);
+          this.setState({
+            weatherInformation: json,
+          });
+        });
     }
-  }  
+  }
 
-  render(){
+  render() {
     return (
       <div>
         <h2>Today's weather:</h2>
-        <Typography variant='h4'>{this.state.weatherInformation.main?.temp}</Typography>
-        <Typography variant='h5'>{this.state.weatherInformation.weather?.[0].main}</Typography>
+        <Typography variant="h4">
+          {this.state.weatherInformation.main?.temp}
+        </Typography>
+        <Typography variant="h5">
+          {this.state.weatherInformation.weather?.[0].main}
+        </Typography>
       </div>
     );
   }
